@@ -2,13 +2,18 @@ const text = document.getElementById("text");
 
 function typeText(content, speed = 40) {
   let i = 0;
-  text.innerText = "";
+  text.style.opacity = 0;
 
-  const interval = setInterval(() => {
-    text.innerText += content[i];
-    i++;
-    if (i >= content.length) clearInterval(interval);
-  }, speed);
+  setTimeout(() => {
+    text.innerText = "";
+    text.style.opacity = 1;
+
+    const interval = setInterval(() => {
+      text.innerText += content[i];
+      i++;
+      if (i >= content.length) clearInterval(interval);
+    }, speed);
+  }, 300);
 }
 
 function start() {
@@ -16,7 +21,7 @@ function start() {
   const song = document.getElementById("song");
   const lightning = document.getElementById("lightning");
 
-  // تشغيل الأغنية بصوت هادي
+  // تشغيل الأغنية تدريجي
   song.volume = 0;
   song.play();
 
@@ -30,6 +35,13 @@ function start() {
     }
   }, 200);
 
+  // وقف قبل النهاية بثانية
+  song.addEventListener("timeupdate", () => {
+    if (song.duration && song.currentTime >= song.duration - 1) {
+      song.pause();
+    }
+  });
+
   // برق
   setInterval(() => {
     lightning.classList.add("flash");
@@ -42,14 +54,14 @@ function start() {
   }, 2000);
 
   setTimeout(() => {
-    typeText("Honestly… I don't think you should go out tomorrow 😌");
-  }, 6000);
+    typeText("Honestly…\nI don't think you should go out tomorrow 😌");
+  }, 7000);
 
   setTimeout(() => {
-    typeText("Stay home… get some rest… be safe 💛");
-  }, 10000);
+    typeText("Stay home…\nget some rest…\nbe safe 💛");
+  }, 12000);
 
   setTimeout(() => {
-    typeText("I’d honestly feel so much better knowing you're asleep and safe 🤍");
-  }, 14000);
+    typeText("I’d honestly feel so much better\nknowing you're asleep and safe 🤍");
+  }, 17000);
 }

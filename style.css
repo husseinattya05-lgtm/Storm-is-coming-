@@ -44,19 +44,30 @@ body {
   100% { opacity: 0; }
 }
 
-/* النص */
+/* الرسالة */
 .message {
   position: absolute;
-  top: 40%;
+  top: 35%;
   width: 100%;
-  font-size: 26px;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 1.6;
+  padding: 0 20px;
+}
+
+#text {
+  display: inline-block;
+  max-width: 80%;
+  letter-spacing: 1px;
+  opacity: 1;
+  transition: opacity 0.5s;
 }
 
 /* الزر */
 button {
   position: absolute;
   bottom: 40px;
-  padding: 10px 20px;
+  padding: 12px 22px;
   font-size: 18px;
   border-radius: 10px;
   border: none;
