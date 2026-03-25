@@ -1,11 +1,11 @@
 const text = document.getElementById("text");
 
-function typeText(content, speed = 50) {
+function typeText(content, speed = 60) {
   let i = 0;
-  text.innerText = "";
+  text.innerHTML = "";
 
   const interval = setInterval(() => {
-    text.innerText += content[i];
+    text.innerHTML += content[i] === " " ? "&nbsp;" : content[i];
     i++;
     if (i >= content.length) clearInterval(interval);
   }, speed);
@@ -18,7 +18,7 @@ function showSentence(sentence, delay) {
     setTimeout(() => {
       typeText(sentence);
       text.style.opacity = 1;
-    }, 400);
+    }, 500);
 
   }, delay);
 }
@@ -55,7 +55,7 @@ function start() {
     setTimeout(() => lightning.classList.remove("flash"), 300);
   }, 2000);
 
-  // الجمل (كل واحدة لوحدها)
+  // الجمل
   showSentence("It's raining and thundering ⛈️", 2000);
 
   showSentence("I don't think you should go out tomorrow 😌", 7000);
